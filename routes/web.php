@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('layout.default');
 });
 
+//-----------------PASSPORT-----------------
+
 Route::get('/passport/create', function () {
     return view('passport/add');
 });
@@ -25,3 +27,7 @@ Route::post('/passports','PassportController@store');
 Route::get('/passports/{id}','PassportController@edit');
 Route::put('/passports/','PassportController@update');
 Route::delete('/passports','PassportController@destroy');
+
+//-----------------PASSPORT-----------------
+
+Route::resource('/product','ProductController');

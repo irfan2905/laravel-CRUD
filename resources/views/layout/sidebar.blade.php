@@ -25,7 +25,30 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li><a href="{{ url('passports') }}">Passport</a></li>
+        <li class="active treeview">
+            <a href="#">
+                <i class="fa fa-book"></i> <span>Passport</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li class="active"><a href="{{ url('passports') }}"><i class="fa fa-circle-o"></i> Passport</a></li>
+            </ul>
+        </li>
+        <li class="active treeview">
+            <a href="#">
+                <i class="fa fa-files-o"></i> <span>Product</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li class="active"><a href="{{ url('product') }}"><i class="fa fa-circle-o"></i> Product</a></li>
+            </ul>
+        </li>
+        <!--<li><a href="{{ url('passports') }}">Passport</a></li>
+        <li><a href="{{ url('product') }}">Product</a></li>-->
         <li class="header">LABELS</li>
         <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
         <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
