@@ -28,6 +28,27 @@ Route::get('/passports/{id}','PassportController@edit');
 Route::put('/passports/','PassportController@update');
 Route::delete('/passports','PassportController@destroy');
 
-//-----------------PASSPORT-----------------
+//-----------------PRODUCT-----------------
 
-Route::resource('/product','ProductController');
+Route::get('/product', function () {
+  return view('product.product');
+});
+
+Route::get('/product/create', function () {
+  return view('product/add_product');
+});
+
+/*Route::group(['prefix' => 'product',  'middleware' => 'auth'], function(){
+  Route::get('/', 'ProductController@index');
+  Route::post('/', 'ProductController@store');
+  Route::get('/{id}', 'ProductController@edit');
+  Route::put('/', 'ProductController@update');
+  Route::delete('/', 'ProductController@destroy');
+});*/
+
+Route::get('/product', 'ProductController@index');
+Route::get('/admin/add/product', 'ProductController@add_product');
+Route::post('/product','ProductController@store');
+Route::get('/product/{id}', 'ProductController@edit');
+Route::put('/product/', 'ProductController@update');
+Route::delete('/product','ProductController@destroy');

@@ -34,6 +34,7 @@
             </a>
             <ul class="treeview-menu">
                 <li class="active"><a href="{{ url('passports') }}"><i class="fa fa-circle-o"></i> Passport</a></li>
+                <li class="active"><a href="{{ url('passports/create') }}"><i class="fa fa-circle-o"></i> Add Passport</a></li>
             </ul>
         </li>
         <li class="active treeview">
@@ -45,6 +46,7 @@
             </a>
             <ul class="treeview-menu">
                 <li class="active"><a href="{{ url('product') }}"><i class="fa fa-circle-o"></i> Product</a></li>
+                <li class="active"><a href="{{ url('product/create') }}"><i class="fa fa-circle-o"></i> Add Product</a></li>
             </ul>
         </li>
         <!--<li><a href="{{ url('passports') }}">Passport</a></li>

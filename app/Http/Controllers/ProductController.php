@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use DB;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\StoreProduct;
+use App\Http\Requests\UpdateProduct;
 
 class ProductController extends Controller
 {
@@ -12,13 +17,16 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $products = \App\Product::paginate(5);
+    public function index(Product $products)
+    {   //$categories = Category::all();
+        $products = Product::paginate(5);
+        return view("product.product", compact('products', $products));
+        
+        /*$products = \App\Product::paginate(5);
 
 
         return view('product.index',compact('products'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+            ->with('i', (request()->input('page', 1) - 1) * 5);*/
     }
 
 
@@ -27,9 +35,13 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function add_product(Products $products)
     {
-        return view('product.create');
+        //return view('product.create');
+        
+        //$categories = Category::all();
+        $products = Product::all();
+        return view("product.create", compact('products', $products));
     }
 
 
@@ -39,43 +51,48 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProduct $request)
     {
-        request()->validate([
-            'name' => 'required',
-            'detail' => 'required',
-        ]);
-
-
-        Product::create($request->all());
-
-
-        return redirect()->route('product.index')
-                        ->with('success','Product created successfully.');
+       $products = new Product;
+       $product->name = $request->post('name');
+       $product->detail = $request->post('detail');
+       $image = $request->file('photo1');
+       $destinationPath = base_path('/public');
+       if (!$image->move($destinationPath, $image->getClientOriginalName())) {
+         return 'Error saving the file.';
+       }
+       $product->photo1 = $image->getClientOriginalName();
+       $product->save();
+            return redirect('product')
+                 ->with('success','Product created successfully.');
     }
-
-
+    
+    
     /**
      * Display the specified resource.
      *
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Products $products)
     {
-        return view('product.show',compact('product'));
+        $products = Product::all();
+        return view('product.show',compact('products', $products));
     }
-
-
+    
+    
+    
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        return view('product.edit',compact('product'));
+        $products = Product::find($id);
+        //$categories = Category::all();
+        return view('product.edit_product',compact('products', 'id', $products, $id));
     }
 
 
@@ -86,19 +103,20 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(UpdateProduct $request)
     {
-         request()->validate([
-            'name' => 'required',
-            'detail' => 'required',
-        ]);
-
-
-        $product->update($request->all());
-
-
-        return redirect()->route('product.index')
-                        ->with('success','Product updated successfully');
+        $products = Product::find($request->id);
+        File::delete(base_path('public/'.$product->photo1));
+        $product->name = $request->name;
+        $product->detail = $request->detail;
+        $image = $request->file('photo1');
+        $destinationPath = base_path('/public');
+        if (!$image->move($destinationPath, $image->getClientOriginalName())) {
+         return 'Error saving the file.';
+        }
+        $product->photo1 = $image->getClientOriginalName();
+        $product->save();
+        return redirect('product.product')->with('success','Product created successfully.');
     }
 
 
@@ -108,12 +126,14 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Request $request)
+
     {
-        $product->delete();
-
-
-        return redirect()->route('product.index')
-                        ->with('success','Product deleted successfully');
+      $products = Product::find($request->id);
+      $image = $request->file('photo1');
+      File::delete(public_path($product->photo1));
+      $product = Product::find($request->id);
+      $product->delete();
+      return redirect('product');
     }
 }
