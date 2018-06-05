@@ -47,7 +47,7 @@ $(function() {
       <h2 class="text-center">Add New Product</h2>
       <div class="row">
         <div class="col-lg-4">
-          {{ Form::open(array('url' => 'product', 'name' => 'add_product', 'onsubmit' => 'return fill()', 'enctype' => 'multipart/form-data')) }}
+          {{ Form::open(array('url' => 'product', 'name' => 'add_product', 'onsubmit' => 'return redirect()', 'enctype' => 'multipart/form-data')) }}
             <div class="form-group">
               <label for="product_name">Name</label>
               <input type="text" data-validation-length="min4" name="name" class="form-control" placeholder="Enter Produk">
