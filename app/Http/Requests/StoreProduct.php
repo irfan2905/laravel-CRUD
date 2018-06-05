@@ -18,7 +18,7 @@ class StoreProduct extends FormRequest {
         $validation = array();
         $validation['name'] = 'required';
         $validation['detail'] = 'required';
-        $validation['photo'] = 'required';
+        $validation['photo1'] = 'required';
         
         return $validation;
     }
@@ -28,7 +28,7 @@ class StoreProduct extends FormRequest {
         
         $validationMessage['name.required'] = "Please Input Product Name";
         $validationMessage['detail.required'] = "Please Input Product Detail";
-        $validationMessage['photo.required'] = "Please Input Product Photo";
+        $validationMessage['photo1.required'] = "Please Input Product Photo";
         
         return $validationMessage;
     }

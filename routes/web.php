@@ -47,7 +47,7 @@ Route::get('/product/create', function () {
 });*/
 
 Route::get('/product', 'ProductController@index');
-Route::get('/admin/add/product', 'ProductController@add_product');
+Route::get('/product/add_product', 'ProductController@add_product');
 Route::post('/product','ProductController@store');
 Route::get('/product/{id}', 'ProductController@edit');
 Route::put('/product/', 'ProductController@update');

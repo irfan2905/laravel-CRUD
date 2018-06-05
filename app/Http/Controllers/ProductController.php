@@ -54,15 +54,15 @@ class ProductController extends Controller
     public function store(StoreProduct $request)
     {
        $products = new Product;
-       $product->name = $request->post('name');
-       $product->detail = $request->post('detail');
+       $products->name = $request->post('name');
+       $products->detail = $request->post('detail');
        $image = $request->file('photo1');
        $destinationPath = base_path('/public');
        if (!$image->move($destinationPath, $image->getClientOriginalName())) {
          return 'Error saving the file.';
        }
-       $product->photo1 = $image->getClientOriginalName();
-       $product->save();
+       $products->photo1 = $image->getClientOriginalName();
+       $products->save();
             return redirect('product')
                  ->with('success','Product created successfully.');
     }
@@ -106,17 +106,17 @@ class ProductController extends Controller
     public function update(UpdateProduct $request)
     {
         $products = Product::find($request->id);
-        File::delete(base_path('public/'.$product->photo1));
-        $product->name = $request->name;
-        $product->detail = $request->detail;
+        File::delete(base_path('public/'.$products->photo1));
+        $products->name = $request->name;
+        $products->detail = $request->detail;
         $image = $request->file('photo1');
         $destinationPath = base_path('/public');
         if (!$image->move($destinationPath, $image->getClientOriginalName())) {
          return 'Error saving the file.';
         }
-        $product->photo1 = $image->getClientOriginalName();
-        $product->save();
-        return redirect('product.product')->with('success','Product created successfully.');
+        $products->photo1 = $image->getClientOriginalName();
+        $products->save();
+        return redirect('product')->with('success','Product created successfully.');
     }
 
 
@@ -131,7 +131,7 @@ class ProductController extends Controller
     {
       $products = Product::find($request->id);
       $image = $request->file('photo1');
-      File::delete(public_path($product->photo1));
+      File::delete(public_path($products->photo1));
       $product = Product::find($request->id);
       $product->delete();
       return redirect('product');

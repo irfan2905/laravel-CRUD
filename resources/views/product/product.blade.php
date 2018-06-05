@@ -95,7 +95,7 @@ $(document).ready(function() {
 
   <div class="row">
     <div class="col-xs-12 text-right">
-      <a href="{{ url('product/add_product') }}" class="btn btn-primary">
+      <a href="{{ url('product/create') }}" class="btn btn-primary">
         <span class="glyphicon glyphicon-plus">ADD</span>
       </a>
     </div>
