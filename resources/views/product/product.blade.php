@@ -79,7 +79,7 @@ $(document).ready(function() {
           <h3>
             @foreach($products as $product)
               @if($loop->first)
-                {{$product->sum('name')}}
+                {{$product->sum('id')}}
               @endif
             @endforeach
           </h3>
@@ -95,7 +95,7 @@ $(document).ready(function() {
 
   <div class="row">
     <div class="col-xs-12 text-right">
-      <a href="{{ url('product/create') }}" class="btn btn-primary">
+      <a href="{{ url('product/add_product') }}" class="btn btn-primary">
         <span class="glyphicon glyphicon-plus">ADD</span>
       </a>
     </div>
@@ -118,20 +118,23 @@ $(document).ready(function() {
           </tr>
             <tbody>
               @foreach($products as $product)
+
               <tr>
                 <td class="text-center">{{ $product->id }}</td>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->detail }}</td>
-                <td>{{ $product->photo }}</td>
+                <td><img src="{{ $product->photo1 }}" alt=" tidak tampil" weidth="200px" height="150px"></td>
 
                 <td class="text-center">
                     <!--Button Edit-->
-                    <a href="{{ action('ProductController@edit', ['id' => $product->id]) }}" name="button" class="btn btn-info">
-                      <span class="glyphicon glyphicon-pencil">Edit</span>
-                    </a>
+                    
 
                     <!--Button Remove-->
-                    <form class="" id="product-{{$product->id}}" action="{{action('ProductController@destroy')}}" method="post">
+                    
+                    <form class="" id="products-{{$product->id}}" action="{{action('ProductController@destroy')}}" method="post">
+                        <a href="{{ action('ProductController@edit', ['id' => $product->id]) }}" name="button" class="btn btn-info">
+                      <span class="glyphicon glyphicon-pencil">Edit</span>
+                    </a>
                     <button type="submit" class="glyphicon glyphicon-remove btn btn-danger delete" product_id="{{$product->id}}" data-toggle="confirmation" data-placement="bottom">Delete</button>
                     {{csrf_field()}}
                     <input type="hidden" name="id" value="{{$product->id}}">

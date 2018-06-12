@@ -43,52 +43,37 @@ $(function() {
 
 </section>
 
-    <section class="content">
-      <h2 class="text-center">Add New Product</h2>
-      <div class="row">
-        <div class="col-lg-4">
-          {{ Form::open(array('url' => 'product', 'name' => 'add_product', 'onsubmit' => 'return redirect()', 'enctype' => 'multipart/form-data')) }}
-            <div class="form-group">
-              <label for="product_name">Name</label>
-              <input type="text" data-validation-length="min4" name="name" class="form-control" placeholder="Enter Produk">
-              @if ($errors->has('name'))
-                    <span class="invalid-feedback">
-                        <strong>{{ $errors->first('name') }}</strong>
-                    </span>
-                @endif
-            </div>
-            
-            <div class="form-group">
-              <label for="product_detail">Detail</label>
-              <input type="text" data-validation-length="min4" name="name" class="form-control" placeholder="Enter Produk Detail">
-              @if ($errors->has('detail'))
-                    <span class="invalid-feedback">
-                        <strong>{{ $errors->first('detail') }}</strong>
-                    </span>
-                @endif
-            </div>
+<section class="content">
+    <h2 class="text-center">Add New Product</h2>
+    <div class="row">
+            <div class="col-lg-4">
+                {{ Form::open(array('url' => 'product', 'name' => 'product', 'onsubmit' => 'return fill()', 'enctype' => 'multipart/form-data')) }}
+                <div class="form-group">
+                    <label for="product_name">Name</label>
+                    <input type="text" data-validation-length="min4" name="name" class="form-control" placeholder="Enter Produk">
+                </div>
 
-            <!-- input file -->
-            <div class="form-group">
-                <label for="photo1">Photo</label>
-                <input type="file" name="photo" id="imgInp" multiple>
-                @if ($errors->has('photo1'))
-                    <span class="invalid-feedback">
-                        <strong>{{ $errors->first('photo1') }}</strong>
-                    </span>
-                @endif
+                <div class="form-group">
+                    <label for="product_detail">Detail</label>
+                    <input type="text" data-validation="number" name="detail" class="form-control" placeholder="Enter Produk Detail">
+                </div>
+
+                <!-- input file -->
+                <div class="form-group">
+                    <label for="photo1">Photo</label>
+                    <input type="file" name="photo1" id="imgInp" multiple>
+                </div>
+
+                <!-- show file -->
+                <div class="form-group">
+                    <div class="thumbnail">
+                        <div class="gallery"></div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                {{ Form::close()}}
+
             </div>
-
-            <!-- show file -->
-            <div class="form-group">
-              <div class="thumbnail">
-                <div class="gallery"></div>
-              </div>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-
-          </form>
-      </div>
-  </section>
+    </div>
+</section>
 @endsection

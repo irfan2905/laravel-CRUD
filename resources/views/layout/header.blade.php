@@ -248,16 +248,33 @@
                         <div class="pull-left">
                             <a href="#" class="btn btn-default btn-flat">Profile</a>
                         </div>
-                        <div class="pull-right">
-                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                        </div>
+                        @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
-                </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    </li>
+                    @else
+                    <div class="pull-right">
+                        <a href="{{ route('logout') }}" class="btn btn-default btn-flat"
+                           onclick="event.preventDefault();
+                                       document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+                    </div>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+
+                    @endguest
             </li>
-            <!-- Control Sidebar Toggle Button -->
-            <li>
-                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-            </li>
+        </ul>
+        </li>
+        <!-- Control Sidebar Toggle Button -->
+        <li>
+            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+        </li>
         </ul>
     </div>
 </nav>
