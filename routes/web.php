@@ -45,17 +45,17 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/passports/create', 'PassportController@create');
     Route::post('/passports', 'PassportController@store');
     Route::get('/passports/{id}', 'PassportController@edit');
-    Route::put('/passports/', 'PassportController@update');
+    Route::put('/passports', 'PassportController@update');
     Route::delete('/passports', 'PassportController@destroy');
 
 //-----------------PRODUCT-----------------
 
-    Route::get('/product', function () {
-        return view('product.product');
-    });
+    /*Route::get('/product/create', function () {
+        return view('product.add_product');
+    });*/
 
     Route::get('/product', 'ProductController@index');
-    Route::get('/product/create', 'ProductController@create');
+    Route::get('/product/create', 'ProductController@add_product');
     Route::post('/product', 'ProductController@store');
     Route::get('/product/{id}', 'ProductController@edit');
     Route::put('/product', 'ProductController@update');

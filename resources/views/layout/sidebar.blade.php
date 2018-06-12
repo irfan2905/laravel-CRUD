@@ -46,7 +46,7 @@
             </a>
             <ul class="treeview-menu">
                 <li class="active"><a href="{{ url('product') }}"><i class="fa fa-circle-o"></i> Product</a></li>
-                <li class="active"><a href="{{ url('product/add_product') }}"><i class="fa fa-circle-o"></i> Add Product</a></li>
+                <li class="active"><a href="{{ url('product/create') }}"><i class="fa fa-circle-o"></i> Add Product</a></li>
             </ul>
         </li>
         <!--<li><a href="{{ url('passports') }}">Passport</a></li>

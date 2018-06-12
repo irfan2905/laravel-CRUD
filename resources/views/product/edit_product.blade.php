@@ -42,7 +42,7 @@
     <h2 class="">Edit Produk</h2>
     <div class="row">
         <form class="" action="{{action('ProductController@update')}}" method="post" enctype="multipart/form-data">
-            @csrf
+            {{csrf_field()}}
             <input type="hidden" name="_method" value="PUT"/>
             <input type="hidden" name="id" value="{{ $products->id }}">
             <div class="col-lg-6">

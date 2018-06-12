@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Product;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\StoreProduct;
@@ -50,7 +52,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    { 
        $products = new Product;
        $products->name = $request->post('name');
        $products->detail = $request->post('detail');
@@ -72,10 +74,9 @@ class ProductController extends Controller
      * @param  \App\Product  $products
      * @return \Illuminate\Http\Response
      */
-    public function show(Products $products)
+    public function show()
     {
-        $products = Product::all();
-        return view('product.show',compact('products', $products));
+
     }
     
     
@@ -83,15 +84,17 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Product  $products
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {   
         //return view('product.edit_product');
         $products = Product::find($id);
+        //var_dump('edit');exit;
         //$categories = Category::all();
-        return view('product.edit_product',compact('products', $products, $id));
+        //return view('product.edit_product',compact('products', $products, $id));
+        return view('product.edit_product',compact('products','id'));
     }
 
 
