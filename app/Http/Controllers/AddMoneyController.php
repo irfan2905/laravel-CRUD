@@ -131,6 +131,9 @@ class AddMoneyController extends HomeController {
         $execution->setPayerId(Input::get('PayerID'));
         /*         * Execute the payment * */
         $result = $payment->execute($execution, $this->_api_context);
+        var_dump($result->id);
+        var_dump($result->transactions[0]->amount->total);
+        var_dump($result->payer->payer_info->shipping_address->city);exit;
         /** dd($result);exit; /** DEBUG RESULT, remove it later * */
         if ($result->getState() == 'approved') {
             /** it's all right * */

@@ -5,11 +5,9 @@
         <group>
             <file>file:/var/www/html/new_version/app/Http/Controllers/AddMoneyController.php</file>
             <file>file:/var/www/html/new_version/routes/web.php</file>
-            <file>file:/var/www/html/new_version/config/paypal.php</file>
             <file>file:/var/www/html/new_version/resources/views/paypal/paywithpaypal.blade.php</file>
-            <file>file:/var/www/html/new_version/config/app.php</file>
-            <file>file:/var/www/html/new_version/config/trustedproxy.php</file>
-            <file>file:/var/www/html/new_version/composer.json</file>
+            <file>file:/var/www/html/new_version/app/paypal.php</file>
+            <file>file:/var/www/html/new_version/resources/views/layout/sidebar.blade.php</file>
         </group>
     </open-files>
 </project-private>
