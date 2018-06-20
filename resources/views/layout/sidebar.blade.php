@@ -49,6 +49,17 @@
                 <li class="active"><a href="{{ url('product/create') }}"><i class="fa fa-circle-o"></i> Add Product</a></li>
             </ul>
         </li>
+        <li class="active treeview">
+            <a href="#">
+                <i class="fa fa-files-o"></i> <span>Paypal</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li class="active"><a href="{{ url('paywithpaypal') }}"><i class="fa fa-circle-o"></i> Payment</a></li>
+            </ul>
+        </li>
         <!--<li><a href="{{ url('passports') }}">Passport</a></li>
         <li><a href="{{ url('product') }}">Product</a></li>-->
         <li class="header">LABELS</li>
