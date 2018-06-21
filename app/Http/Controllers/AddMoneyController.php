@@ -131,9 +131,25 @@ class AddMoneyController extends HomeController {
         $execution->setPayerId(Input::get('PayerID'));
         /*         * Execute the payment * */
         $result = $payment->execute($execution, $this->_api_context);
-        var_dump($result->id);
-        var_dump($result->transactions[0]->amount->total);
-        var_dump($result->payer->payer_info->shipping_address->city);exit;
+        //var_dump($result->id);
+        //var_dump($result->transactions[0]->amount->total);
+        //var_dump($result->payer->payer_info->shipping_address->city);exit;
+        
+        $ins_paypal = new Paypal;
+        
+        $ins_paypal->transaction_id = $result->id;
+        $ins_paypal->email = $result->payer->payer_info->email;
+        $ins_paypal->country = $result->payer->payer_info->shipping_address->country_code;
+        $ins_paypal->state = $result->payer->payer_info->shipping_address->state;
+        $ins_paypal->city = $result->payer->payer_info->shipping_address->city;
+        $transactions = array();
+        foreach($result->transactions as $transaction){
+            $transactions[] = $transaction;
+        }
+        //var_dump();exit();
+        $ins_paypal->total = $transaction->amount->total;
+        $ins_paypal->save();
+        
         /** dd($result);exit; /** DEBUG RESULT, remove it later * */
         if ($result->getState() == 'approved') {
             /** it's all right * */
