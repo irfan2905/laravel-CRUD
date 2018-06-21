@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class paypal extends Model
+class Paypal extends Model
 {
     //
 }

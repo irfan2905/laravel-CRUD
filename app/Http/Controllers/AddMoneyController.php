@@ -146,7 +146,7 @@ class AddMoneyController extends HomeController {
         foreach($result->transactions as $transaction){
             $transactions[] = $transaction;
         }
-        //var_dump();exit();
+
         $ins_paypal->total = $transaction->amount->total;
         $ins_paypal->save();
         
