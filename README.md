@@ -1,1 +1,1 @@
-# laravel-CRUD
+web: vendor/bin/heroku-php-apache2 public/
