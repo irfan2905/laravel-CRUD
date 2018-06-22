@@ -134,7 +134,7 @@ class AddMoneyController extends HomeController {
         //var_dump($result->id);
         //var_dump($result->transactions[0]->amount->total);
         //var_dump($result->payer->payer_info->shipping_address->city);exit;
-        
+        /*
         $ins_paypal = new Paypal;
         
         $ins_paypal->transaction_id = $result->id;
