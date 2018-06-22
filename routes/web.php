@@ -50,9 +50,9 @@ Route::group(['middleware' => 'auth'], function() {
 
 //-----------------PRODUCT-----------------
 
-    /*Route::get('/product/create', function () {
-        return view('product.add_product');
-    });*/
+    Route::get('/product/create', function () {
+        return view('product/add_product');
+    });
 
     Route::get('/product', 'ProductController@index');
     Route::get('/product/create', 'ProductController@add_product');
