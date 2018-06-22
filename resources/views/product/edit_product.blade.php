@@ -53,8 +53,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="detail">Detail</label>
-                    <input type="text" data-validation="number" name="detail" class="form-control" placeholder="Enter Detail" value="{{ $products->detail }}">
+                    <label for="price">Price</label>
+                    <input type="text" data-validation="number" name="price" class="form-control" placeholder="Enter Price" value="{{ $products->price }}">
                 </div>
 
                 <div class="form-group">

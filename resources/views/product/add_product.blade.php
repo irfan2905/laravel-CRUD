@@ -56,8 +56,8 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="form-group col-md-4">
-            <label for="product_detail">Detail</label>
-            <input type="text" data-validation="number" name="detail" class="form-control" placeholder="Enter Produk Detail">
+            <label for="product_price">Price</label>
+            <input type="text" data-validation="number" name="price" class="form-control" placeholder="Enter Produk Price">
         </div>
     </div>
     <div class="row">

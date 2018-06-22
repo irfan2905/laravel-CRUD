@@ -55,7 +55,7 @@ class ProductController extends Controller
     { 
        $products = new Product;
        $products->name = $request->post('name');
-       $products->detail = $request->post('detail');
+       $products->price = $request->post('price');
        $image = $request->file('photo1');
        $destinationPath = base_path('/public');
        if (!$image->move($destinationPath, $image->getClientOriginalName())) {
@@ -110,7 +110,7 @@ class ProductController extends Controller
         $products = Product::find($request->id);
         File::delete(base_path('public/'.$products->photo1));
         $products->name = $request->name;
-        $products->detail = $request->detail;
+        $products->price = $request->price;
         $image = $request->file('photo1');
         $destinationPath = base_path('/public');
         if (!$image->move($destinationPath, $image->getClientOriginalName())) {

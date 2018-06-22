@@ -111,7 +111,7 @@ $(document).ready(function() {
               <tr>
                 <th class="text-center">Id</th>
                 <th class="text-center">Name</th>
-                <th class="text-center">Detail</th>
+                <th class="text-center">Price</th>
                 <th class="text-center">Photo</th>
                 <th class="text-center">Action</th>
             </thead>
@@ -122,7 +122,7 @@ $(document).ready(function() {
               <tr>
                 <td class="text-center">{{ $product->id }}</td>
                 <td>{{ $product->name }}</td>
-                <td>{{ $product->detail }}</td>
+                <td>{{ $product->price }}</td>
                 <td><img src="{{ $product->photo1 }}" alt=" tidak tampil" weidth="200px" height="150px"></td>
 
                 <td class="text-center">
