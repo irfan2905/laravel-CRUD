@@ -86,3 +86,10 @@ Route::get('paypal', function () {
 Route::get('paywithpaypal', array('as' => 'addmoney.paywithpaypal','uses' => 'AddMoneyController@payWithPaypal',));
 Route::post('paypal', array('as' => 'addmoney.paypal','uses' => 'AddMoneyController@postPaymentWithpaypal',));
 Route::get('paypal', array('as' => 'payment.status','uses' => 'AddMoneyController@getPaymentStatus',));
+
+/*Route::get('payment-status',array('as'=>'payment.status','uses'=>'AddMoneyController@paymentInfo'));
+Route::get('payment',array('as'=>'payment','uses'=>'AddMoneyController@payment'));
+
+Route::get('payment-cancel', function () {
+    return 'Payment has been canceled';
+});

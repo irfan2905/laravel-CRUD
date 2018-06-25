@@ -3,16 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/html/new_version/.env-heroku</file>
-            <file>file:/var/www/html/new_version/config/logging.php</file>
             <file>file:/var/www/html/new_version/app/Http/Controllers/AddMoneyController.php</file>
             <file>file:/var/www/html/new_version/routes/web.php</file>
-            <file>file:/var/www/html/new_version/app/Http/Controllers/UserController.php</file>
-            <file>file:/var/www/html/new_version/app/User.php</file>
-            <file>file:/var/www/html/new_version/config/app.php</file>
-            <file>file:/var/www/html/new_version/app/Http/Controllers/Auth/RegisterController.php</file>
-            <file>file:/var/www/html/new_version/.env</file>
-            <file>file:/var/www/html/new_version/database/seeds/UsersTableSeeder.php</file>
+            <file>file:/var/www/html/new_version/resources/views/paypal/paywithpaypal.blade.php</file>
         </group>
     </open-files>
 </project-private>

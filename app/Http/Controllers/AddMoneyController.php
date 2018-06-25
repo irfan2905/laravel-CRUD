@@ -97,6 +97,7 @@ class AddMoneyController extends HomeController {
                 /** die('Some error occur, sorry for inconvenient'); * */
             }
         }
+        
         foreach ($payment->getLinks() as $link) {
             if ($link->getRel() == 'approval_url') {
                 $redirect_url = $link->getHref();
@@ -105,7 +106,7 @@ class AddMoneyController extends HomeController {
         }
         /** add payment ID to session * */
         Session::put('paypal_payment_id', $payment->getId());
-        if (isset($redirect_url)) {
+        if (isset($redirect_url)) {            
             /** redirect to paypal * */
             return Redirect::away($redirect_url);
         }
@@ -134,23 +135,23 @@ class AddMoneyController extends HomeController {
         //var_dump($result->id);
         //var_dump($result->transactions[0]->amount->total);
         //var_dump($result->payer->payer_info->shipping_address->city);exit;
-        /*
-        $ins_paypal = new Paypal;
         
-        $ins_paypal->transaction_id = $result->id;
-        $ins_paypal->email = $result->payer->payer_info->email;
-        $ins_paypal->country = $result->payer->payer_info->shipping_address->country_code;
-        $ins_paypal->state = $result->payer->payer_info->shipping_address->state;
-        $ins_paypal->city = $result->payer->payer_info->shipping_address->city;
-        $transactions = array();
-        foreach($result->transactions as $transaction){
-            $transactions[] = $transaction;
-        }
+          $ins_paypal = new Paypal;
 
-        $ins_paypal->total = $transaction->amount->total;
-        $ins_paypal->save();
-        
-        /** dd($result);exit; /** DEBUG RESULT, remove it later * */
+          $ins_paypal->transaction_id = $result->id;
+          $ins_paypal->email = $result->payer->payer_info->email;
+          $ins_paypal->country = $result->payer->payer_info->shipping_address->country_code;
+          $ins_paypal->state = $result->payer->payer_info->shipping_address->state;
+          $ins_paypal->city = $result->payer->payer_info->shipping_address->city;
+          $transactions = array();
+          foreach($result->transactions as $transaction){
+          $transactions[] = $transaction;
+          }
+
+          $ins_paypal->total = $transaction->amount->total;
+          $ins_paypal->save();
+
+          /** dd($result);exit; /** DEBUG RESULT, remove it later * */
         if ($result->getState() == 'approved') {
             /** it's all right * */
             /** Here Write your database logic like that insert record or value in database if you want * */
@@ -158,8 +159,32 @@ class AddMoneyController extends HomeController {
             return Redirect::route('addmoney.paywithpaypal');
         }
         Session::put('error', 'Payment failed');
-        
+
         return Redirect::route('addmoney.paywithpaypal');
     }
+
+    /*public function paymentInfo(Request $request) {
+        if ($request->tx) {
+            if ($payment = Payment::where('transaction_id', $request->tx)->first()) {
+                $payment_id = $payment->id;
+            } else {
+                $payment = new Payment;
+                $payment->item_number = $request->item_number;
+                $payment->transaction_id = $request->tx;
+                $payment->currency_code = $request->cc;
+                $payment->payment_status = $request->st;
+                $payment->save();
+                $payment_id = $payment->id;
+            }
+            return 'Payment has been done and your payment id is : ' . $payment_id;
+        } else {
+            return 'Payment has failed';
+        }
+    }
+
+    public function payment(Request $request) {
+        $product = Product::find($request->id);
+        return view('payment', compact('product'));
+    }*/
 
 }
