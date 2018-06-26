@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Product;
+use App\Cart;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\StoreProduct;
 use App\Http\Requests\UpdateProduct;
+use Session;
 
 class ProductController extends Controller
 {
@@ -74,9 +76,15 @@ class ProductController extends Controller
      * @param  \App\Product  $products
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function getAddToCart(Request $request, $id)
     {
-
+        $product = Product::find($id);
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new cart($oldCart);
+        $cart->add($product, $product->id);
+        
+        $request->session()->put('cart', $cart);
+        return redirect('product');
     }
     
     
@@ -137,5 +145,15 @@ class ProductController extends Controller
       $product = Product::find($request->id);
       $product->delete();
       return redirect('product');
+    }
+    
+    public function getCart() {
+        if (!Session::has('cart')) {
+            return view ('shopping_cart.shop', [$products=> NULL]);
+            exit;
+        }
+        $oldcart = Session::get('cart');
+        $cart = new Cart($oldcart);
+        return view ('shopping_cart.shop', ['products'=> $cart->items, 'totalPrice' => $cart->totalPrice]);
     }
 }

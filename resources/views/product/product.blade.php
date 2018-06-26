@@ -99,25 +99,20 @@
         @foreach($products as $product)
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
-                <img src="{{ $product->photo1 }}" class="thumbnail" alt=" Cannot Show Image" align="center" weidth="242px" height="200px">
+                <img src="{{ $product->photo1 }}" class="thumbnail-img" alt=" Cannot Show Image" align="center" weidth="242px" height="200px">
                 <h3>{{ $product->name }}</h3>
                 <div class=""> $ {{ $product->price }}</div>
                 <div class="clearfix">
-                    <form class="pull-right" id="products-{{$product->id}}" action="{{action('ProductController@destroy')}}" method="post">
-                        <a href="{{ action('ProductController@edit', ['id' => $product->id]) }}" name="button" class="btn btn-info">
-                            <span class="glyphicon glyphicon-pencil">Edit</span>
-                        </a>
-                        <button type="submit" class="glyphicon glyphicon-remove btn btn-danger delete" product_id="{{$product->id}}" data-toggle="confirmation" data-placement="bottom">Delete</button>
-                        {{csrf_field()}}
-                        <input type="hidden" name="id" value="{{$product->id}}">
-                        <input type="hidden" name="_method" value="delete">
-                    </form>
+                    <a href="{{ action('ProductController@getAddToCart', ['id' => $product->id]) }}" role="button" class="btn btn-success pull-right">
+                        <span class="glyphicon glyphicon-shopping-cart"> Add To Cart</span>
+                    </a>
+                    {{csrf_field()}}
                 </div>
             </div>
         </div>
         @endforeach
     </div>
-        {{ $products->links() }}
+    {{ $products->links() }}
     <div id="dialog" title="Empty the recycle bin?" style="display: none;">
         <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
     </div>
