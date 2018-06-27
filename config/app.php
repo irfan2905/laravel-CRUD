@@ -147,6 +147,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         'Collective\Html\HtmlServiceProvider',
+        Laravel\Socialite\SocialiteServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -212,6 +213,7 @@ return [
         'Html' => 'Collective\Html\HtmlFacade',
         'Input' => Illuminate\Support\Facades\Input::class,
         'log'=> 'errorlog',
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];

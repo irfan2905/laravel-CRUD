@@ -98,4 +98,9 @@ Route::get('payment',array('as'=>'payment','uses'=>'AddMoneyController@payment')
 
 Route::get('payment-cancel', function () {
     return 'Payment has been canceled';
-});
+});*/
+
+//-----------------SOCIALITE-----------------
+
+Route::get('auth/{provider}', 'SocialAuthController@redirect');
+Route::get('auth/{provider}/callback', 'SocialAuthController@callback');

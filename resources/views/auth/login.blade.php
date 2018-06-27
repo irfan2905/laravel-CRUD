@@ -69,6 +69,15 @@
         </div>
 
         <div class="social-auth-links text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="{{ url('auth/facebook') }}" class="btn btn-primary">
+                            <i class="fa fa-facebook"></i>Login With Facebook
+                        </a>              
+                    </div>
+                </div>
+            </div>
             <p>- OR -</p>
             <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
                 Facebook</a>
