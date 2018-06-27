@@ -90,11 +90,11 @@
             </div>
         </div>
     </div>
-    <div class="col-xs-12 text-right">
+    <!--<div class="col-xs-12 text-right">
         <a href="{{ url('product/create') }}" class="btn btn-primary">
             <span class="glyphicon glyphicon-plus">ADD</span>
         </a>
-    </div>
+    </div>-->
     <div class="row">
         @foreach($products as $product)
         <div class="col-sm-6 col-md-4">

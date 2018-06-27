@@ -64,7 +64,10 @@ Route::group(['middleware' => 'auth'], function() {
     Route::put('/product', 'ProductController@update');
     Route::delete('/product', 'ProductController@destroy');
     Route::get('/add-to-cart/{id}', 'ProductController@getAddToCart');
-    Route::get('/shopping-cart', 'ProductController@getCart');
+    Route::get('/cart', 'ProductController@getCart');
+    Route::get('/checkout', 'ProductController@getCheckout');
+    Route::post('/checkout', 'ProductController@postCheckout');
+    
 });
 
 /*

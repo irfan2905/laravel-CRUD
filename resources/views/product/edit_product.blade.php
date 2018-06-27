@@ -39,7 +39,7 @@
 @section('content')
 
 <div class="container">
-    <h2 class="">Edit Produk</h2>
+    <h2 class="">Edit Product</h2>
     <div class="row">
         <form class="" action="{{action('ProductController@update')}}" method="post" enctype="multipart/form-data">
             {{csrf_field()}}

@@ -17,7 +17,7 @@
         <ul class="nav navbar-nav">
             <!-- Shopping Cart -->
             <li class="dropdown messages-menu">
-                <a href="{{ url('shopping_cart') }}">
+                <a href="{{ url('cart') }}">
                     <i class="fa fa-shopping-cart"></i>
                     <span class="badge">{{ $oldCart = Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
                 </a>

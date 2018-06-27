@@ -7,7 +7,7 @@
                 @foreach($products as $product)
                 <li class="list-group-item">
                     <span class="badge">{{ $product['qty'] }}</span>
-                    <strong>{{ $product['item']['title'] }}</strong>
+                    <strong>{{ $product['item']['name'] }}</strong>
                     <span class="label label-success">{{ $product['price'] }}</span>
                     <div class="btn-group">
                         <button type="button" class="btn btn-primary btn-xs dropdown-toggle" 
@@ -24,13 +24,13 @@
     </div>
     <div class="row">
         <div class="col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-3">
-            <strong>Total: {{ $totalPrice }}</strong>  
+            <strong>Total: $ {{ $totalPrice }}</strong>  
         </div>
     </div>
     <hr>
     <div class="row">
         <div class="col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-3">
-            <button type='button' class='btn btn-success'>Checkout</button>  
+            <a href="{{ url('checkout') }}" type="button" class="btn btn-success">Checkout</a>  
         </div>
     </div>
     @else
