@@ -36,9 +36,9 @@ return [
     ],
     
     'facebook' => [
-        'client_id' => env('FB_CLIENT_ID'),
-        'client_secret' => env('FB_CLIENT_SECRET'),
-        'redirect' => env('FB_CALLBACK_URL'),
+        'client_id' => '464145394024431',
+        'client_secret' => '540db26924665ac2670d6bcb95706805',
+        'redirect' => 'https://immense-lowlands-65875.herokuapp.com/callback',
     ],
 
 ];
