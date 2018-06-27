@@ -2,63 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Socialite;
-use Exception;
-use Auth;
 
 class SocialAuthController extends Controller
 {
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function redirect($provider)
+  /**
+   * Create a redirect method to facebook api.
+   *
+   * @return void
+   */
+    public function redirect()
     {
-        return Socialite::driver($provider)->redirect();
+        return Socialite::driver('facebook')->redirect();
     }
 
     /**
-     * Get the user info from provider and check if user exist for specific provider
-     * then log them in otherwise
-     * create a new user then log them in 
-     * Once user is logged in then redirect to authenticated home page
+     * Return a callback method from facebook api.
      *
-     * @return Response
+     * @return callback URL from facebook
      */
-    public function callback($provider)
+    public function callback()
     {
-        try {
-            $user = Socialite::driver($provider)->user();
-            $input['name'] = $user->getName();
-            $input['email'] = $user->getEmail();
-            $input['provider'] = $provider;
-            $input['provider_id'] = $user->getId();
-
-            $authUser = $this->findOrCreate($input);
-            Auth::loginUsingId($authUser->id);
-
-            return redirect()->route('home');
-
-
-        } catch (Exception $e) {
-
-            return redirect('auth/'.$provider);
-
-        }
+       
     }
-    public function findOrCreate($input){
-    	$checkIfExist = User::where('provider',$input['provider'])
-                           ->where('provider_id',$input['provider_id'])					   	 
-                           ->first();
-
-        if($checkIfExist){
-            return $checkIfExist;
-        }
-
-        return User::create($input);
-	}
 }

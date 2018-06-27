@@ -72,8 +72,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="{{ url('auth/facebook') }}" class="btn btn-primary">
-                            <i class="fa fa-facebook"></i>Login With Facebook
+                        <a href="{{url('/redirect')}}" class="btn btn-primary">
+                            <i class="fa fa-facebook"></i> Login With Facebook
                         </a>              
                     </div>
                 </div>
