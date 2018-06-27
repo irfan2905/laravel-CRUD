@@ -6,15 +6,14 @@ use Illuminate\Http\Request;
 use Socialite;
 use App\Services\SocialFacebookAccountService;
 
-class SocialAuthController extends Controller
-{
-  /**
-   * Create a redirect method to facebook api.
-   *
-   * @return void
-   */
-    public function redirect()
-    {
+class SocialAuthController extends Controller {
+
+    /**
+     * Create a redirect method to facebook api.
+     *
+     * @return void
+     */
+    public function redirect() {
         return Socialite::driver('facebook')->redirect();
     }
 
@@ -23,10 +22,12 @@ class SocialAuthController extends Controller
      *
      * @return callback URL from facebook
      */
-    public function callback(SocialFacebookAccountService $service)
-    {
-        $user = $service->createOrGetUser(Socialite::driver('facebook')->User());
-        auth()->login($user);
-        return redirect()->to('/product/create');
+    public function callback(SocialFacebookAccountService $service) {
+        //$user = $service->createOrGetUser(Socialite::driver('facebook')->User());
+        //auth()->login($user);
+        $user = Socialite::with('facebook')->user();
+        print_r($user);
+        return redirect()->to('/product');
     }
+
 }
