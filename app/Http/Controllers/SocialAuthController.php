@@ -22,10 +22,11 @@ class SocialAuthController extends Controller {
      *
      * @return callback URL from facebook
      */
-    public function callback(SocialFacebookAccountService $service) {
+    public function callback(SocialFacebookAccountService $service, $request) {
         //$user = $service->createOrGetUser(Socialite::driver('facebook')->User());
-        $socialiteUser = Socialite::with($service)->user();
-        auth()->login($socialiteUser);
+        //auth()->login($user);
+        $state = $request->get('state');
+    $request->session()->put('state',$state);
         return redirect()->to('/passports');
     }
 
