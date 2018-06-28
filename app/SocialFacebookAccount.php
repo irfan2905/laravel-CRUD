@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SocialFacebookAccount extends Model
 {
-    protected $fillable = ['user_id', 'provider_user_id', 'provider'];
+    protected $fillable = ['user_id', 'name', 'email', 'password','provider_user_id', 'provider'];
 
   public function user()
   {
