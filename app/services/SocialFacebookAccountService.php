@@ -17,12 +17,13 @@ class SocialFacebookAccountService
         if ($account) {
             return $account->user;
         } else {
-
+            /*    
             $account = new SocialFacebookAccount([
                 'provider_user_id' => $providerUser->getId(),
                 'provider' => 'facebook'
             ]);
-
+            */
+            
             $user = User::whereEmail($providerUser->getEmail())->first();
 
             if (!$user) {
@@ -30,7 +31,7 @@ class SocialFacebookAccountService
                 $user = User::create([
                     'email' => $providerUser->getEmail(),
                     'name' => $providerUser->getName(),
-                    'password' => md5(rand(1,10000)),
+                    'password' => bcrypt('secret'),
                 ]);
             }
 
