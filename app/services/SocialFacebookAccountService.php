@@ -28,7 +28,7 @@ class SocialFacebookAccountService
 
                 $user = User::create([
                     'email' => $providerUser->getEmail(),
-                    'username' => $providerUser->getName(),
+                    'name' => $providerUser->getName(),
                     'password' => bcrypt('secret'),
                 ]);
             }
