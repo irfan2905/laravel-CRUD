@@ -16,7 +16,7 @@ class SocialAuthController extends Controller {
         
         $user = $service->createOrGetUser(Socialite::driver('facebook')->User());
         auth()->login($user);
-        return redirect()->to('/passports');
+        return redirect()->to('layout.default');
     }
 
 }
