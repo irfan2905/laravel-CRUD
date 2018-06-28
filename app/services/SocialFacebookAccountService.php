@@ -17,12 +17,10 @@ class SocialFacebookAccountService
         if ($account) {
             return $account->user;
         } else {
-            /*    
             $account = new SocialFacebookAccount([
                 'provider_user_id' => $providerUser->getId(),
                 'provider' => 'facebook'
             ]);
-            */
             
             $user = User::whereEmail($providerUser->getEmail())->first();
 
