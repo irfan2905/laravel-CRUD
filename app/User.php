@@ -18,4 +18,8 @@ class User extends Authenticatable {
         'name', 'email', 'password', 'provider', 'provider_id'
     ];
 
+    public function SocialFacebookAccount() {
+        return $this->hasMany(SocialFacebookAccount::class);
+    }
+
 }
