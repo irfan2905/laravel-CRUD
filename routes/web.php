@@ -102,5 +102,7 @@ Route::get('payment-cancel', function () {
 
 //-----------------SOCIALITE-----------------
 
+Auth::routes();
+
 Route::get('/redirect', 'SocialAuthController@redirect');
 Route::get('/callback', 'SocialAuthController@callback');
