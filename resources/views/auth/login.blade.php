@@ -70,7 +70,7 @@
 
         <a href="{{url('/redirect')}}" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
             Facebook</a>
-        <p>- OR -</p>
+        <p align="center">- OR -</p>
         <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
             Google+</a>
     </div>
