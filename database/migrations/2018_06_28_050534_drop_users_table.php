@@ -13,7 +13,7 @@ class DropUsersTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::dropIfExists('users');
     }
 
     /**
