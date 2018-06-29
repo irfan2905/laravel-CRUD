@@ -4,16 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/var/www/html/new_version/app/Http/Controllers/SocialAuthController.php</file>
-            <file>file:/var/www/html/new_version/resources/views/auth/login.blade.php</file>
-            <file>file:/var/www/html/new_version/app/services/SocialFacebookAccountService.php</file>
             <file>file:/var/www/html/new_version/routes/web.php</file>
-            <file>file:/var/www/html/new_version/app/User.php</file>
-            <file>file:/var/www/html/new_version/app/SocialFacebookAccount.php</file>
-            <file>file:/var/www/html/new_version/database/migrations/2018_06_27_062134_create_users_table.php</file>
-            <file>file:/var/www/html/new_version/config/services.php</file>
-            <file>file:/var/www/html/new_version/config/app.php</file>
-            <file>file:/var/www/html/new_version/.env-local</file>
-            <file>file:/var/www/html/new_version/.env</file>
+            <file>file:/var/www/html/new_version/app/Http/Controllers/UserController.php</file>
+            <file>file:/var/www/html/new_version/database/migrations/2018_06_27_132229_create_social_facebook_accounts_table.php</file>
         </group>
     </open-files>
 </project-private>
