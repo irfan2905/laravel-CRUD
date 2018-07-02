@@ -23,11 +23,11 @@
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" id="payment-form" role="form" action="{!! URL::route('addmoney.paypal') !!}" >
                         {{ csrf_field() }}
-                        <div class="form-group {{ $errors->has('amount') ? ' has-error' : '' }}">
+                        <div class="form-group {{ $total->has('total') ? ' has-error' : '' }}">
                             <label for="amount" class="col-md-4 control-label">Amount</label>
                             <div class="col-md-6">
-                                <input id="amount" type="text" class="form-control" name="amount" value="{{ old('amount') }}" autofocus>
-                                @if ($errors->has('amount'))
+                                <input id="amount" type="text" class="form-control" name="amount" value="{{ $total }}" autofocus>
+                                @if ($total->has('total'))
                                 <span class="help-block">
                                     <strong>{{ $total }}</strong>
                                 </span>
