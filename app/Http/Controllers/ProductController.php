@@ -171,11 +171,7 @@ class ProductController extends Controller
     }
     
     public function getCheckout() {
-        if (!Session::has('cart')) {
-            return view ('product');
-        }
-        $oldcart = Session::get('cart');
-        $cart = new Cart($oldcart);
-        return redirect('paywith', ['totalPrice' => $cart->totalPrice ]);
+        $totalPrice = $cart->totalPrice;
+        return redirect('paywith');
     }
 }
