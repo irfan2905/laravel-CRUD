@@ -178,6 +178,6 @@ class ProductController extends Controller
         $cart = new Cart($oldcart);
         $total = $cart->totalPrice;
         //return redirect('addmoney.paypal', ['totalPrice' => $totalPrice ]);
-        return redirect()->action('addmoney/paypal', ['totalPrice' => $totalPrice ]);
+        return redirect()->action('paywith', ['totalPrice' => $totalPrice ]);
     }
 }
