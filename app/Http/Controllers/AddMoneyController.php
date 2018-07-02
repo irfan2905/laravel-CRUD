@@ -56,7 +56,7 @@ class AddMoneyController extends HomeController {
         $item_1->setName('Item 1') /** item name * */
                 ->setCurrency('USD')
                 ->setQuantity(1)
-                ->setPrice($request->get('amount'));/** unit price * */
+                ->setPrice($request->get('totalPrice'));/** unit price * */
         $item_list = new ItemList();
         $item_list->setItems(array($item_1));
 
