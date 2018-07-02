@@ -59,6 +59,7 @@ class AddMoneyController extends HomeController {
      * @return IlluminateHttpResponse
      */
     public function postPaymentWithpaypal(Request $request) {
+        exit;
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
         $oldcart = Session::get('cart');
