@@ -94,7 +94,7 @@ Route::get('paypal', function () {
 //Route::get('paypal', array('as' => 'payment.status', 'uses' => 'AddMoneyController@getPaymentStatus',));
 
 //payment form
-Route::get('/', 'PaymentController@index');
+//Route::get('/', 'PaymentController@index');
 // route for processing payment
 Route::post('paypal', 'PaymentController@payWithpaypal');
 // route for check status of the payment
