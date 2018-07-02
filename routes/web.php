@@ -86,7 +86,7 @@ Route::group(['middleware' => 'auth'], function() {
 //-----------------PAYPAL-----------------
 
 Route::get('paypal', function () {
-    return redirect('paywithpaypal');
+    return view('paypal.paywithpaypal');
 });
 
 //Route::get('paywithpaypal', array('as' => 'addmoney.paywithpaypal', 'uses' => 'AddMoneyController@payWithPaypal',));
