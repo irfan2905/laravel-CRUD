@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Product;
+use App\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Validator;
@@ -59,11 +61,13 @@ class AddMoneyController extends HomeController {
     public function postPaymentWithpaypal(Request $request) {
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
-        $item_1 = new Item();
-        $item_1->setName('Item 1') /** item name * */
+        $oldcart = Session::get('cart');
+        $cart = new Cart($oldcart);
+        $total = $cart->totalPrice;
+        $products->setName('name') /** item name * */
                 ->setCurrency('USD')
                 ->setQuantity(1)
-                ->setPrice($request->get('amount'));/** unit price * */
+                ->setPrice($request->get('totalPrice'));/** unit price * */
         $item_list = new ItemList();
         $item_list->setItems(array($item_1));
         $amount = new Amount();
@@ -121,7 +125,7 @@ class AddMoneyController extends HomeController {
         Session::forget('paypal_payment_id');
         if (empty(Input::get('PayerID')) || empty(Input::get('token'))) {
             Session::put('error', 'Payment failed');
-            return Redirect::route('addmoney.paypal');
+            return Redirect::route('paypal.paywithpaypal');
         }
         $payment = Payment::get($payment_id, $this->_api_context);
         /** PaymentExecution object includes information necessary * */
