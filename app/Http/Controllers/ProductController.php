@@ -176,6 +176,7 @@ class ProductController extends Controller
         }
         $oldcart = Session::get('cart');
         $cart = new Cart($oldcart);
+        var_dump($cart);exit;
         return redirect('paywith', ['totalPrice' => $cart->totalPrice ]);
     }
 }
