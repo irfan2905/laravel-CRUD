@@ -69,26 +69,6 @@ class ProductController extends Controller
                  ->with('success','Product created successfully.');
     }
     
-    
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Product  $products
-     * @return \Illuminate\Http\Response
-     */
-    public function getAddToCart(Request $request, $id)
-    {
-        $product = Product::find($id);
-        $oldCart = Session::has('cart') ? Session::get('cart') : null;
-        $cart = new cart($oldCart);
-        $cart->add($product, $product->id);
-        
-        $request->session()->put('cart', $cart);
-        return redirect('product');
-    }
-    
-    
-    
     /**
      * Show the form for editing the specified resource.
      *
@@ -146,6 +126,24 @@ class ProductController extends Controller
       $product->delete();
       return redirect('product');
     }
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Product  $products
+     * @return \Illuminate\Http\Response
+     */
+    public function getAddToCart(Request $request, $id)
+    {
+        $product = Product::find($id);
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new cart($oldCart);
+        $cart->add($product, $product->id);
+        
+        $request->session()->put('cart', $cart);
+        return redirect('product');
+    }
+    
     
     public function getCart() {
         if (!Session::has('cart')) {
