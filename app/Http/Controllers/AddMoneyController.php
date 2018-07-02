@@ -125,7 +125,7 @@ class AddMoneyController extends HomeController {
         Session::forget('paypal_payment_id');
         if (empty(Input::get('PayerID')) || empty(Input::get('token'))) {
             Session::put('error', 'Payment failed');
-            return Redirect::route('shopping_cart.shop');
+            return Redirect::route('cart');
         }
         $payment = Payment::get($payment_id, $this->_api_context);
         /** PaymentExecution object includes information necessary * */
