@@ -89,16 +89,16 @@ Route::get('paypal', function () {
     return redirect('paywithpaypal');
 });
 
-Route::get('paywithpaypal', array('as' => 'addmoney.paywithpaypal', 'uses' => 'AddMoneyController@payWithPaypal',));
-Route::post('paypal', array('as' => 'addmoney.paypal', 'uses' => 'AddMoneyController@postPaymentWithpaypal',));
-Route::get('paypal', array('as' => 'payment.status', 'uses' => 'AddMoneyController@getPaymentStatus',));
+//Route::get('paywithpaypal', array('as' => 'addmoney.paywithpaypal', 'uses' => 'AddMoneyController@payWithPaypal',));
+//Route::post('paypal', array('as' => 'addmoney.paypal', 'uses' => 'AddMoneyController@postPaymentWithpaypal',));
+//Route::get('paypal', array('as' => 'payment.status', 'uses' => 'AddMoneyController@getPaymentStatus',));
 
-/*Route::get('payment-status',array('as'=>'payment.status','uses'=>'AddMoneyController@paymentInfo'));
-Route::get('payment',array('as'=>'payment','uses'=>'AddMoneyController@payment'));
-
-Route::get('payment-cancel', function () {
-    return 'Payment has been canceled';
-});*/
+//payment form
+Route::get('/', 'PaymentController@index');
+// route for processing payment
+Route::post('paypal', 'PaymentController@payWithpaypal');
+// route for check status of the payment
+Route::get('status', 'PaymentController@getPaymentStatus');
 
 //-----------------SOCIALITE-----------------
 

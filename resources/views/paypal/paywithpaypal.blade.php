@@ -20,7 +20,7 @@
         <?php Session::forget('error'); ?>
         @endif
         <div class="col-md-8 col-md-offset-2">
-            <form class="w3-container w3-display-middle w3-card-4 " method="POST" id="payment-form"  action="/payment/add-funds/paypal">
+            <form class="w3-container w3-display-middle w3-card-4 " method="POST" id="payment-form"  action="/paypal">
                 {{ csrf_field() }}
                 <h2 class="w3-text-blue">Payment Form</h2>
                 <p>Demo PayPal form - Integrating paypal in laravel</p>

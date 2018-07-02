@@ -71,7 +71,7 @@ class AddMoneyController extends HomeController {
 
         $redirect_urls = new RedirectUrls();
         $redirect_urls->setReturnUrl(URL::route('status')) /** Specify return URL * */
-                ->setCancelUrl(URL::route('paypal.paywithpaypal'));
+                ->setCancelUrl(URL::route('paywithpaypal'));
 
         $payment = new Payment();
         $payment->setIntent('Sale')
@@ -84,10 +84,10 @@ class AddMoneyController extends HomeController {
         } catch (\PayPal\Exception\PPConnectionException $ex) {
             if (\Config::get('app.debug')) {
                 \Session::put('error', 'Connection timeout');
-                return Redirect::route('paypal.paywithpaypal');
+                return Redirect::route('paywithpaypal');
             } else {
                 \Session::put('error', 'Some error occur, sorry for inconvenient');
-                return Redirect::route('paypal.paywithpaypal');
+                return Redirect::route('paywithpaypal');
             }
         }
         foreach ($payment->getLinks() as $link) {
@@ -103,7 +103,7 @@ class AddMoneyController extends HomeController {
             return Redirect::away($redirect_url);
         }
         \Session::put('error', 'Unknown error occurred');
-        return Redirect::route('paypal.paywithpaypal');
+        return Redirect::route('paywithpaypal');
     }
 
     public function getPaymentStatus() {
