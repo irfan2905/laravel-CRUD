@@ -29,7 +29,7 @@
                                 <input id="amount" type="text" class="form-control" name="amount" value="{{ old('amount') }}" autofocus>
                                 @if (Session::has('cart'))
                                 <span class="help-block">
-                                    <strong>{{ $product['price'] }}</strong>
+                                    <strong>{{ $products['price'] }}</strong>
                                 </span>
                                 @endif
                             </div>
