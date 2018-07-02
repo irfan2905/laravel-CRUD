@@ -29,7 +29,7 @@
                                 <input id="amount" type="text" class="form-control" name="amount" value="{{ old('amount') }}" autofocus>
                                 @if ($errors->has('amount'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('amount') }}</strong>
+                                    <strong>{{ $total }}</strong>
                                 </span>
                                 @endif
                             </div>
