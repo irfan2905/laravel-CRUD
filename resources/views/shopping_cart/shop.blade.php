@@ -30,7 +30,7 @@
     <hr>
     <div class="row">
         <div class="col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-3">
-            <a href="{!! URL::route('addmoney.paywithpaypal') !!}" type="button" class="btn btn-success">Checkout</a>  
+            <a method="POST" href="{!! URL::route('addmoney.paypal') !!}" type="button" class="btn btn-success">Checkout</a>  
         </div>
     </div>
     @else
