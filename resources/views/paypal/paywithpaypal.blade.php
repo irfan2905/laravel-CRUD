@@ -28,8 +28,9 @@
                             <div class="col-md-6">
                                 <input id="amount" type="text" class="form-control" name="amount" value="{{ old('amount') }}" autofocus>
                                 @if (Session::has('cart'))
+                                @foreach($products as $product)
                                 <span class="help-block">
-                                    <strong>{{ $products['price'] }}</strong>
+                                    <strong>{{ $product['price'] }}</strong>
                                 </span>
                                 @endif
                             </div>
