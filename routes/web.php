@@ -86,7 +86,7 @@ Route::group(['middleware' => 'auth'], function() {
 //-----------------PAYPAL-----------------
 
 Route::get('paypal', function () {
-    return view('paypal.paywithpaypal');
+    return view('paypal.paywithpaypal')->name('paywith');
 });
 
 //Route::get('paywithpaypal', array('as' => 'addmoney.paywithpaypal', 'uses' => 'AddMoneyController@payWithPaypal',));
@@ -94,11 +94,11 @@ Route::get('paypal', function () {
 //Route::get('paypal', array('as' => 'payment.status', 'uses' => 'AddMoneyController@getPaymentStatus',));
 
 //payment form
-//Route::get('/', 'PaymentController@index');
+//Route::get('/', 'AddMoneyController@index');
 // route for processing payment
 Route::post('paypal', 'AddMoneyController@payWithpaypal');
 // route for check status of the payment
-Route::get('status', 'AddMoneyController@getPaymentStatus')->name('status');
+Route::get('status', 'AddMoneyController@getPaymentStatus')->name('status.paypal');
 
 //-----------------SOCIALITE-----------------
 

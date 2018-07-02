@@ -70,7 +70,7 @@ class AddMoneyController extends HomeController {
                 ->setDescription('Your transaction description');
 
         $redirect_urls = new RedirectUrls();
-        $redirect_urls->setReturnUrl(URL::route('status')) /** Specify return URL * */
+        $redirect_urls->setReturnUrl(URL::route('status.paypal')) /** Specify return URL * */
                 ->setCancelUrl(URL::route('status'));
 
         $payment = new Payment();
@@ -114,7 +114,7 @@ class AddMoneyController extends HomeController {
         Session::forget('paypal_payment_id');
         if (empty(Input::get('PayerID')) || empty(Input::get('token'))) {
             \Session::put('error', 'Payment failed');
-            return Redirect::route('/');
+            return Redirect::route('paywith');
         }
         
         $payment = Payment::get($payment_id, $this->_api_context);
@@ -125,11 +125,11 @@ class AddMoneyController extends HomeController {
         $result = $payment->execute($execution, $this->_api_context);
         if ($result->getState() == 'approved') {
             \Session::put('success', 'Payment success');
-            return Redirect::route('/');
+            return Redirect::route('paywith');
         }
         
-        \Session::put('error', 'Payment failed');
-        return Redirect::route('/');
+        \Session::put('error', 'Payment failed');        
+        return Redirect::route('paywith');
     }
 
 }
