@@ -56,13 +56,13 @@ class AddMoneyController extends HomeController {
         $item_1->setName('Item 1') /** item name * */
                 ->setCurrency('USD')
                 ->setQuantity(1)
-                ->setPrice($request->get('totalPrice'));/** unit price * */
+                ->setPrice($request->get('price'));/** unit price * */
         $item_list = new ItemList();
         $item_list->setItems(array($item_1));
 
         $amount = new Amount();
         $amount->setCurrency('USD')
-                ->setTotal($request->get('amount'));
+                ->setTotal($request->get('total'));
 
         $transaction = new Transaction();
         $transaction->setAmount($amount)
