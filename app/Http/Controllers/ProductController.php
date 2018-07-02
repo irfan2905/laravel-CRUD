@@ -161,6 +161,6 @@ class ProductController extends Controller
         $oldcart = Session::get('cart');
         $cart = new Cart($oldcart);
         $total = $cart->totalPrice;
-        return view('paypal.paywithpaypal', ['totalPrice' => $totalPrice ]);
+        return redirect('addmoney.paypal', ['totalPrice' => $totalPrice ]);
     }
 }
