@@ -167,7 +167,7 @@ class ProductController extends Controller
         }
         $oldcart = Session::get('cart');
         $cart = new Cart($oldcart);
-        return view ('shopping_cart.shop', ['products'=> $cart->items, 'totalPrice' => $cart->totalPrice]);
+        return view ('paywith', ['products'=> $cart->items, 'totalPrice' => $cart->totalPrice]);
     }
     
     public function getCheckout() {
