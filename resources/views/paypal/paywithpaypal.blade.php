@@ -21,7 +21,7 @@
                 @endif
                 <div class="panel-heading">Paywith Paypal</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" id="payment-form" role="form" action="{!! url('/checkout') !!}" >
+                    <form class="form-horizontal" method="POST" id="payment-form" role="form" action="{!! url('checkout') !!}" >
                         {{ csrf_field() }}
                         <div class="form-group {{ $total->has('total') ? ' has-error' : '' }}">
                             <label for="amount" class="col-md-4 control-label">Amount</label>

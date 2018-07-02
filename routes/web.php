@@ -66,7 +66,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/add-to-cart/{id}', 'ProductController@getAddToCart');
     Route::get('/cart', 'ProductController@getCart');
     Route::get('/checkout', 'ProductController@getCheckout');
-    Route::post('/checkout', 'ProductController@postCheckout');
+    Route::post('/checkout', array('as' => 'checkout', 'uses' => 'ProductController@postCheckout'));
     
 });
 
