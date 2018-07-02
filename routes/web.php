@@ -98,7 +98,7 @@ Route::get('paypal', function () {
 // route for processing payment
 Route::post('paypal', 'AddMoneyController@payWithpaypal');
 // route for check status of the payment
-Route::post('status', 'AddMoneyController@getPaymentStatus');
+Route::get('status', 'AddMoneyController@getPaymentStatus')->name('status');
 
 //-----------------SOCIALITE-----------------
 
