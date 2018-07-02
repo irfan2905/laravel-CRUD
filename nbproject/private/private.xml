@@ -4,10 +4,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/var/www/html/new_version/app/Http/Controllers/AddMoneyController.php</file>
-            <file>file:/var/www/html/new_version/routes/web.php</file>
             <file>file:/var/www/html/new_version/app/Http/Controllers/ProductController.php</file>
+            <file>file:/var/www/html/new_version/routes/web.php</file>
+            <file>file:/var/www/html/new_version/resources/views/layout/header.blade.php</file>
+            <file>file:/var/www/html/new_version/resources/views/product/product.blade.php</file>
             <file>file:/var/www/html/new_version/resources/views/paypal/paywithpaypal.blade.php</file>
             <file>file:/var/www/html/new_version/resources/views/shopping_cart/shop.blade.php</file>
+            <file>file:/var/www/html/new_version/.env</file>
         </group>
     </open-files>
 </project-private>
