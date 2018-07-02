@@ -174,6 +174,8 @@ class ProductController extends Controller
         if (!Session::has('cart')) {
             return view ('product');
         }
+        $oldcart = Session::get('cart');
+        $cart = new Cart($oldcart);
         $totalPrice = $cart->totalPrice;
         return redirect('paywith');
     }
