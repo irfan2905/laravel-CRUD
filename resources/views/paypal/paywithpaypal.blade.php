@@ -32,6 +32,7 @@
                                 <span class="help-block">
                                     <strong>{{ $product['price'] }}</strong>
                                 </span>
+                                @endforeach
                                 @endif
                             </div>
                         </div>
