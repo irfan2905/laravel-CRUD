@@ -21,15 +21,15 @@
                 @endif
                 <div class="panel-heading">Paywith Paypal</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" id="checkout-form" role="form" action="{!! url('checkout') !!}" >
+                    <form class="form-horizontal" method="POST" id="payment-form" role="form" action="{!! URL::route('addmoney.paypal') !!}" >
                         {{ csrf_field() }}
-                        <div class="form-group {{ $totalPrice->has('totalPrice') }}">
-                            <label for="totalPrice" class="col-md-4 control-label">Amount</label>
+                        <div class="form-group">
+                            <label for="amount" class="col-md-4 control-label">Amount</label>
                             <div class="col-md-6">
-                                <input id="totalPrice" type="text" class="form-control" name="amount" value="{{ $totalPrice }}" autofocus>
-                                @if ($totalPrice->has('totalPrice'))
+                                <input id="amount" type="text" class="form-control" name="amount" value="{{ old('amount') }}" autofocus>
+                                @if (Session::has('cart'))
                                 <span class="help-block">
-                                    <strong>{{ $totalPrice }}</strong>
+                                    <strong>{{ $product['price'] }}</strong>
                                 </span>
                                 @endif
                             </div>

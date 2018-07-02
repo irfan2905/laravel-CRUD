@@ -59,18 +59,18 @@ class AddMoneyController extends HomeController {
     public function postPaymentWithpaypal(Request $request) {
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
-        $name = new Item();
-        $name->setName('Name') /** item name * */
+        $item_1 = new Item();
+        $item_1->setName('Item 1') /** item name * */
                 ->setCurrency('USD')
                 ->setQuantity(1)
-                ->setPrice($request->get('price'));/** unit price * */
+                ->setPrice($request->get('amount'));/** unit price * */
         $item_list = new ItemList();
-        $item_list->setItems(array($name));
+        $item_list->setItems(array($item_1));
         $amount = new Amount();
         $amount->setCurrency('USD')
-                ->setTotal($request->get('totalPrice'));
+                ->setTotal($request->get('amount'));
         $transaction = new Transaction();
-        $transaction->setAmount($totalPrice)
+        $transaction->setAmount($amount)
                 ->setItemList($item_list)
                 ->setDescription('Your transaction description');
         $redirect_urls = new RedirectUrls();
