@@ -3,49 +3,32 @@
 @section('content')
 <div class="container">
     <div class="row">
+        @if ($message = Session::get('success'))
+        <div class="w3-panel w3-green w3-display-container">
+            <span onclick="this.parentElement.style.display = 'none'"
+                  class="w3-button w3-green w3-large w3-display-topright">&times;</span>
+            <p>{!! $message !!}</p>
+        </div>
+        <?php Session::forget('success'); ?>
+        @endif
+        @if ($message = Session::get('error'))
+        <div class="w3-panel w3-red w3-display-container">
+            <span onclick="this.parentElement.style.display = 'none'"
+                  class="w3-button w3-red w3-large w3-display-topright">&times;</span>
+            <p>{!! $message !!}</p>
+        </div>
+        <?php Session::forget('error'); ?>
+        @endif
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                @if ($message = Session::get('success'))
-                <div class="custom-alerts alert alert-success fade in">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                    {!! $message !!}
-                </div>
-                <?php Session::forget('success'); ?>
-                @endif
-                @if ($message = Session::get('error'))
-                <div class="custom-alerts alert alert-danger fade in">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                    {!! $message !!}
-                </div>
-                <?php Session::forget('error'); ?>
-                @endif
-                <div class="panel-heading">Paywith Paypal</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" id="payment-form" role="form" action="{!! URL::route('addmoney.paypal') !!}" >
-                        {{ csrf_field() }}
-                        <div class="form-group">
-                            <label for="amount" class="col-md-4 control-label">Amount</label>
-                            <div class="col-md-6">
-                                <input id="amount" type="text" class="form-control" name="amount" value="{{ old('amount') }}" autofocus>
-                                @if (Session::has('cart'))
-                                @foreach($products as $product)
-                                <span class="help-block">
-                                    <strong>{{ $product['price'] }}</strong>
-                                </span>
-                                @endforeach
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Paywith Paypal
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            <form class="w3-container w3-display-middle w3-card-4 " method="POST" id="payment-form"  action="/payment/add-funds/paypal">
+                {{ csrf_field() }}
+                <h2 class="w3-text-blue">Payment Form</h2>
+                <p>Demo PayPal form - Integrating paypal in laravel</p>
+                <p>      
+                    <label class="w3-text-blue"><b>Enter Amount</b></label>
+                    <input class="w3-input w3-border" name="amount" type="text"></p>      
+                <button class="w3-btn w3-blue">Pay with PayPal</button></p>
+            </form>
         </div>
     </div>
 </div>

@@ -1,35 +1,12 @@
-<?php
-
-return array(
-/** set your paypal credential **/
-'client_id' =>'AUFxOYwvc8kP7ZL_ncHehmrqZ0Hn8VB5kh2Fk_eNMRjb1bXCIcrSOY1tR_hfwsGjudzc88NIO8Ldlg4y',
-'secret' => 'ECeI7G5M3vn0YZ7vVRJvzjPPJeIZ6q7fVuWNGniDRNGh_og6JSAetInhlBuocHiaOnGUeHNI7E3mem8s',
-/**
-* SDK configuration
-*/
-'settings' => array(
-/**
-* Available option 'sandbox' or 'live'
-*/
-'mode' => 'sandbox',
-/**
-* Specify the max request time in seconds
-*/
-'http.ConnectionTimeOut' => 1000,
-/**
-* Whether want to log to a file
-*/
-'log.LogEnabled' => true,
-/**
-* Specify the file that want to write on
-*/
-'log.FileName' => storage_path() . '/logs/paypal.log',
-/**
-* Available option 'FINE', 'INFO', 'WARN' or 'ERROR'
-*
-* Logging is most verbose in the 'FINE' level and decreases as you
-* proceed towards ERROR
-*/
-'log.LogLevel' => 'FINE'
-),
-);
+<?php 
+return [ 
+    'client_id' => env('PAYPAL_CLIENT_ID','AWTdz-Lp_c-CAF6b-qDSRqiBow3VmqM7wpYjyusFDOGJFvA37IEikp3q_cTdvLyEHr7EI-joNQulyKVr'),
+    'secret' => env('PAYPAL_SECRET','EDjpgJIIIVfwU18lxkhALloKJX0980Drnj5j-KLsP2HfDyUu7D87ModTlRPavcMDLfRF9pfjg0VhgsQa'),
+    'settings' => array(
+        'mode' => env('PAYPAL_MODE','sandbox'),
+        'http.ConnectionTimeOut' => 30,
+        'log.LogEnabled' => true,
+        'log.FileName' => storage_path() . '/logs/paypal.log',
+        'log.LogLevel' => 'ERROR'
+    ),
+];
