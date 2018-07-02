@@ -171,6 +171,9 @@ class ProductController extends Controller
     }
     
     public function getCheckout() {
+        if (!Session::has('cart')) {
+            return view ('product');
+        }
         $totalPrice = $cart->totalPrice;
         return redirect('paywith');
     }
