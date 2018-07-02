@@ -31,7 +31,7 @@
     <div class="row">
         {{ csrf_field() }}
         <div class="col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-3">
-            <a method="POST" id="payment-form" role="form" href="{!! URL::route('checkout') !!}" type="button" class="btn btn-success">Checkout</a>  
+            <a method="POST" id="payment-form" role="form" href="{!! URL::route('paywith') !!}" type="button" class="btn btn-success">Checkout</a>  
         </div>
     </div>
     @else

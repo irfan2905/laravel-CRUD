@@ -19,7 +19,6 @@
         </div>
         <?php Session::forget('error'); ?>
         @endif
-        @if(Session::has('cart'))
         <div class="col-md-8 col-md-offset-2">
             <form class="w3-container w3-display-middle w3-card-4 " method="POST" id="payment-form"  action="paypal">
                 {{ csrf_field() }}
@@ -31,7 +30,6 @@
                 <button class="w3-btn w3-blue">Pay with PayPal</button></p>
             </form>
         </div>
-        @endif
     </div>
 </div>
 @endsection
