@@ -91,13 +91,13 @@ class AddMoneyController extends HomeController {
         } catch (PayPalExceptionPPConnectionException $ex) {
             if (Config::get('app.debug')) {
                 Session::put('error', 'Connection timeout');
-                return Redirect('paypal.paywithpaypal');
+                return Redirect::route('paypal.paywithpaypal');
                 /** echo "Exception: " . $ex->getMessage() . PHP_EOL; * */
                 /** $err_data = json_decode($ex->getData(), true); * */
                 /** exit; * */
             } else {
                 Session::put('error', 'Some error occur, sorry for inconvenient');
-                return Redirect('paypal.paywithpaypal');
+                return Redirect::route('paypal.paywithpaypal');
                 /** die('Some error occur, sorry for inconvenient'); * */
             }
         }
@@ -112,10 +112,10 @@ class AddMoneyController extends HomeController {
         Session::put('paypal_payment_id', $payment->getId());
         if (isset($redirect_url)) {            
             /** redirect to paypal * */
-            return Redirect($redirect_url);
+            return Redirect::away($redirect_url);
         }
         Session::put('error', 'Unknown error occurred');
-        return Redirect('paypal.paywithpaypal');
+        return Redirect::route('paypal.paywithpaypal');
     }
 
     public function getPaymentStatus(Request $request) {
@@ -125,7 +125,7 @@ class AddMoneyController extends HomeController {
         Session::forget('paypal_payment_id');
         if (empty(Input::get('PayerID')) || empty(Input::get('token'))) {
             Session::put('error', 'Payment failed');
-            return Redirect('shopping_cart.shop');
+            return Redirect::route('shopping_cart.shop');
         }
         $payment = Payment::get($payment_id, $this->_api_context);
         /** PaymentExecution object includes information necessary * */
@@ -160,11 +160,11 @@ class AddMoneyController extends HomeController {
             /** it's all right * */
             /** Here Write your database logic like that insert record or value in database if you want * */
             Session::put('success', 'Payment success');
-            return Redirect('paypal.paywithpaypal');
+            return Redirect::route('paypal.paywithpaypal');
         }
         Session::put('error', 'Payment failed');
 
-        return Redirect('paypal.paywithpaypal');
+        return Redirect::route('paypal.paywithpaypal');
     }
 
     /*public function paymentInfo(Request $request) {
