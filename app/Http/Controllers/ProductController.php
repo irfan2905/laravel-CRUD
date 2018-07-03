@@ -178,6 +178,6 @@ class ProductController extends Controller
         $cart = new Cart($oldcart);
         $totalPrice = $cart->totalPrice;
         var_dump($totalPrice);exit('wow');
-        return view('paypal.paywithpaypal');
+        return view('paypal.paywithpaypal',compact('totalPrice)'));
     }
 }
