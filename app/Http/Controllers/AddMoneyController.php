@@ -51,24 +51,26 @@ class AddMoneyController extends HomeController {
     public function payWithpaypal(Request $request) {
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
-
+        var_dump($payer);
         $item_1 = new Item();
         $item_1->setName('Item 1') /** item name * */
                 ->setCurrency('USD')
                 ->setQuantity(1)
                 ->setPrice($request->get('price'));/** unit price * */
+        var_dump($item_1);
         $item_list = new ItemList();
         $item_list->setItems(array($item_1));
-
+        var_dump($item_list);
         $amount = new Amount();
         $amount->setCurrency('USD')
                 ->setTotal($request->get('totalPrice'));
-
+        var_dump($amount);
         $transaction = new Transaction();
         $transaction->setAmount($amount)
                 ->setItemList($item_list)
                 ->setDescription('Your transaction description');
-
+        var_dump($transaction);
+        exit;
         $redirect_urls = new RedirectUrls();
         $redirect_urls->setReturnUrl(URL::route('status.paypal')) /** Specify return URL * */
                 ->setCancelUrl(URL::route('status.paypal'));
