@@ -102,6 +102,7 @@ class AddMoneyController extends HomeController {
     }
 
     public function getPaymentStatus() {
+        exit;
         /** Get the payment ID before session clear * */
         $payment_id = Session::get('paypal_payment_id');
         /** clear the session payment ID * */
