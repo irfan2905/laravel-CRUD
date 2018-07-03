@@ -68,12 +68,12 @@ class AddMoneyController extends HomeController {
         $redirect_urls = new RedirectUrls();
         $redirect_urls->setReturnUrl(URL::route('status.paypal')) /** Specify return URL * */
                 ->setCancelUrl(URL::route('status.paypal'));
-        exit;
         $payment = new Payment();
         $payment->setIntent('Sale')
                 ->setPayer($payer)
                 ->setRedirectUrls($redirect_urls)
                 ->setTransactions(array($transaction));
+        exit;
         /** dd($payment->create($this->_api_context));exit; * */
         try {
             $payment->create($this->_api_context);
