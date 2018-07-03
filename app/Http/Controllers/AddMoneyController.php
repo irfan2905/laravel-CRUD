@@ -73,11 +73,11 @@ class AddMoneyController extends HomeController {
                 ->setPayer($payer)
                 ->setRedirectUrls($redirect_urls)
                 ->setTransactions(array($transaction));
-        exit;
         /** dd($payment->create($this->_api_context));exit; * */
         try {
             $payment->create($this->_api_context);
         } catch (\PayPal\Exception\PPConnectionException $ex) {
+            exit;
             if (\Config::get('app.debug')) {
                 \Session::put('error', 'Connection timeout');
                 return Redirect::route('paywithpaypal');
