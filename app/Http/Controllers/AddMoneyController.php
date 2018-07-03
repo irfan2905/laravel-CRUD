@@ -66,8 +66,8 @@ class AddMoneyController extends HomeController {
                 ->setItemList($item_list)
                 ->setDescription('Your transaction description');
         $redirect_urls = new RedirectUrls();
-        $redirect_urls->setReturnUrl(URL::route('status')) /** Specify return URL * */
-                ->setCancelUrl(URL::route('status'));
+        $redirect_urls->setReturnUrl(URL::route('paywith')) /** Specify return URL * */
+                ->setCancelUrl(URL::route('paywith'));
         $payment = new Payment();
         $payment->setIntent('Sale')
                 ->setPayer($payer)
