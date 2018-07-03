@@ -62,7 +62,7 @@ class AddMoneyController extends HomeController {
 
         $amount = new Amount();
         $amount->setCurrency('USD')
-                ->setTotal($request->get('total'));
+                ->setTotal($request->get('totalPrice'));
 
         $transaction = new Transaction();
         $transaction->setAmount($amount)
