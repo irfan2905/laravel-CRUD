@@ -177,7 +177,6 @@ class ProductController extends Controller
         $oldcart = Session::get('cart');
         $cart = new Cart($oldcart);
         $totalPrice = $cart->totalPrice;
-        var_dump($totalPrice);exit('wow');
-        return view('paypal.paywithpaypal',compact('totalPrice)'));
+        return view('paypal.paywithpaypal',compact('totalPrice'));
     }
 }
