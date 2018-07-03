@@ -49,7 +49,6 @@ class AddMoneyController extends HomeController {
      * @return IlluminateHttpResponse
      */
     public function payWithpaypal(Request $request) {
-        exit;
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
         $item_1 = new Item();
@@ -69,7 +68,7 @@ class AddMoneyController extends HomeController {
         $redirect_urls = new RedirectUrls();
         $redirect_urls->setReturnUrl(URL::route('status.paypal')) /** Specify return URL * */
                 ->setCancelUrl(URL::route('status.paypal'));
-
+        exit;
         $payment = new Payment();
         $payment->setIntent('Sale')
                 ->setPayer($payer)
