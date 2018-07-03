@@ -49,6 +49,7 @@ class AddMoneyController extends HomeController {
      * @return IlluminateHttpResponse
      */
     public function payWithpaypal(Request $request) {
+        exit;
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
         $item_1 = new Item();
