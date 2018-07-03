@@ -55,19 +55,19 @@ class AddMoneyController extends HomeController {
         $item_1->setName('Item 1') /** item name * */
                 ->setCurrency('USD')
                 ->setQuantity(1)
-                ->setPrice($request->get('price'));/** unit price * */
+                ->setPrice($request->get('amount'));/** unit price * */
         $item_list = new ItemList();
         $item_list->setItems(array($item_1));
-        $totalPrice = new Amount();
-        $totalPrice->setCurrency('USD')
-                ->setTotal($request->get('totalPrice'));
+        $amount = new Amount();
+        $amount->setCurrency('USD')
+                ->setTotal($request->get('amount'));
         $transaction = new Transaction();
-        $transaction->setAmount($totalPrice)
+        $transaction->setAmount($amount)
                 ->setItemList($item_list)
                 ->setDescription('Your transaction description');
         $redirect_urls = new RedirectUrls();
-        $redirect_urls->setReturnUrl(URL::route('status.paypal')) /** Specify return URL * */
-                ->setCancelUrl(URL::route('status.paypal'));
+        $redirect_urls->setReturnUrl(URL::route('status')) /** Specify return URL * */
+                ->setCancelUrl(URL::route('status'));
         $payment = new Payment();
         $payment->setIntent('Sale')
                 ->setPayer($payer)
@@ -77,7 +77,6 @@ class AddMoneyController extends HomeController {
         try {
             $payment->create($this->_api_context);
         } catch (\PayPal\Exception\PPConnectionException $ex) {
-            exit;
             if (\Config::get('app.debug')) {
                 \Session::put('error', 'Connection timeout');
                 return Redirect::route('paywithpaypal');
@@ -104,7 +103,6 @@ class AddMoneyController extends HomeController {
 
     public function getPaymentStatus() {
         /** Get the payment ID before session clear * */
-        
         $payment_id = Session::get('paypal_payment_id');
         /** clear the session payment ID * */
         Session::forget('paypal_payment_id');
@@ -112,19 +110,19 @@ class AddMoneyController extends HomeController {
             \Session::put('error', 'Payment failed');
             return Redirect::route('paywith');
         }
-        
+
         $payment = Payment::get($payment_id, $this->_api_context);
         $execution = new PaymentExecution();
         $execution->setPayerId(Input::get('PayerID'));
-        
+
         /*         * Execute the payment * */
         $result = $payment->execute($execution, $this->_api_context);
         if ($result->getState() == 'approved') {
             \Session::put('success', 'Payment success');
             return Redirect::route('paywith');
         }
-        
-        \Session::put('error', 'Payment failed');        
+
+        \Session::put('error', 'Payment failed');
         return Redirect::route('paywith');
     }
 
