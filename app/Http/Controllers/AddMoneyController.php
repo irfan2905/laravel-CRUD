@@ -98,7 +98,7 @@ class AddMoneyController extends HomeController {
             return Redirect::away($redirect_url);
         }
         \Session::put('error', 'Unknown error occurred');
-        return Redirect::route('paywith');
+        return Redirect::route('product');
     }
 
     public function getPaymentStatus() {
