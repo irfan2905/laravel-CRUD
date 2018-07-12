@@ -66,7 +66,7 @@ class AddMoneyController extends HomeController {
                 ->setItemList($item_list)
                 ->setDescription('Your transaction description');
         $redirect_urls = new RedirectUrls();
-        $redirect_urls->setReturnUrl(URL::route('paywith')) /** Specify return URL * */
+        $redirect_urls->setReturnUrl(URL('status')) /** Specify return URL * */
                 ->setCancelUrl(URL::route('paywith'));
         $payment = new Payment();
         $payment->setIntent('Sale')
@@ -98,18 +98,17 @@ class AddMoneyController extends HomeController {
             return Redirect::away($redirect_url);
         }
         \Session::put('error', 'Unknown error occurred');
-        return Redirect::route('paywith');
+        return Redirect::route('product');
     }
 
     public function getPaymentStatus() {
-        exit;
         /** Get the payment ID before session clear * */
         $payment_id = Session::get('paypal_payment_id');
         /** clear the session payment ID * */
         Session::forget('paypal_payment_id');
         if (empty(Input::get('PayerID')) || empty(Input::get('token'))) {
             \Session::put('error', 'Payment failed');
-            return Redirect::route('paywith');
+            return Redirect::route('product');
         }
 
         $payment = Payment::get($payment_id, $this->_api_context);
@@ -118,13 +117,16 @@ class AddMoneyController extends HomeController {
 
         /*         * Execute the payment * */
         $result = $payment->execute($execution, $this->_api_context);
+        //var_dump($result);exit();
         if ($result->getState() == 'approved') {
+            
             \Session::put('success', 'Payment success');
-            return Redirect::route('paywith');
+            Session::forget('cart');
+            return Redirect::route('product');
         }
 
         \Session::put('error', 'Payment failed');
-        return Redirect::route('paywith');
+        return Redirect::route('product');
     }
 
 }

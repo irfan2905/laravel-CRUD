@@ -149,6 +149,9 @@ class ProductController extends Controller
      * @param  \App\Product  $products
      * @return \Illuminate\Http\Response
      */
+    
+    
+    
     public function getAddToCart(Request $request, $id)
     {
         $product = Product::find($id);
@@ -176,6 +179,7 @@ class ProductController extends Controller
         }
         $oldcart = Session::get('cart');
         $cart = new Cart($oldcart);
+        //$totalPrice = $cart->totalPrice;
         $totalPrice = $cart->totalPrice;
         return view('paypal.paywithpaypal',compact('totalPrice'));
     }

@@ -45,6 +45,9 @@
         <li><a href="#">Tables</a></li>
         <li class="active">Data Product</li>
     </ol>
+    @if(Session::has('success'))
+    <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('success') }}</p>
+    @endif
 </section>
 
 <!-- Main content -->
