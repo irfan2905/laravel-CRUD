@@ -11,6 +11,8 @@ use Validator;
 use URL;
 use Session;
 use Redirect;
+use PayPal\Api\PayerInfo;
+use PayPal\Api\ShippingAddress;
 //use Input;
 /** All Paypal Details class * */
 use PayPal\Rest\ApiContext;
@@ -25,6 +27,7 @@ use PayPal\Api\RedirectUrls;
 use PayPal\Api\ExecutePayment;
 use PayPal\Api\PaymentExecution;
 use PayPal\Api\Transaction;
+use App\Paypal;
 
 class AddMoneyController extends HomeController {
 
@@ -118,6 +121,20 @@ class AddMoneyController extends HomeController {
         /*         * Execute the payment * */
         $result = $payment->execute($execution, $this->_api_context);
         //var_dump($result);exit();
+        $ins_paypal = new Paypal;
+        
+        $ins_paypal->transaction_id = $result->id;
+        $ins_paypal->email = $result->payer->payer_info->email;
+        $ins_paypal->country = $result->payer->payer_info->shipping_address->country_code;
+        $ins_paypal->state = $result->payer->payer_info->shipping_address->state;
+        $ins_paypal->city = $result->payer->payer_info->shipping_address->city;
+        $transactions = array();
+        foreach($result->transactions as $transaction){
+            $transactions[] = $transaction;
+        }
+        $ins_paypal->total = $transaction->amount->total;
+        $ins_paypal->save();
+        
         if ($result->getState() == 'approved') {
             
             \Session::put('success', 'Payment success');

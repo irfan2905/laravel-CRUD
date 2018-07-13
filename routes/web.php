@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/', function () {
-        return view('layout.default');
+        return view('layout.home');
     });
 
     $this->get('/verify-user/{code}', 'Auth\RegisterController@activateUser')->name('activate.user');
